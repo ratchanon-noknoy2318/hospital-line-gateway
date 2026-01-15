@@ -1,60 +1,80 @@
 # Technical Specification Framework
-**Institutional Infrastructure: Kamphaeng Phet Community Municipal Hospital**
-*Document Identifier: KPC-HIS-LINEOA-001*
-*Subject: Integrated Health Information Gateway (LINE Messaging Interface)*
+**Institutional Infrastructure:** Kamphaeng Phet Community Municipal Hospital  
+**Document Identifier:** KPC-HIS-LINEOA-001  
+**Subject:** Integrated Health Information Gateway (LINE Messaging Interface)  
+**Classification:** Internal Use Only (Confidential)  
+**Revision:** 1.0.4 (2026)
 
 ---
 
 ## 1. Executive Summary
 
-The Webhook Service Module constitutes the core architectural interface between the LINE Messaging Platform and the Internal Health Information Systems (HIS). This integration is engineered to provide a secure, high-availability conduit for event-driven data processing, ensuring that all institutional communications adhere to stringent integrity and cryptographic standards as prescribed by the hospital’s information technology governance.
+The **Webhook Service Module** constitutes the core architectural bridge between the LINE Messaging Platform and the Internal Hospital Information System (HIS). This integration is engineered to facilitate a high-availability, real-time data conduit, governed by stringent cryptographic security protocols and institutional data governance frameworks. The system ensures seamless interoperability while maintaining the highest standards of medical data integrity.
+
+### 1.1 Systematic Attributes
 
 | Systematic Attribute | Technical Specification |
 |:---|:---|
 | **System Identity** | KPC-Main-Webhook-Integration |
 | **Functional Classification** | Enterprise Event-Driven Middleware |
 | **Architecture Paradigm** | Synchronous RESTful Integration |
-| **Authentication Standard** | HMAC-SHA256 Cryptographic Verification |
+| **Security Standard** | HMAC-SHA256 Cryptographic Signature Verification |
+| **Data Transport** | End-to-End Encryption via TLS 1.2+ (HTTPS) |
+| **Service Continuity** | 24/7 High-Availability (HA) Configuration |
 
 ---
 
 ## 2. Institutional Interface Specifications
 
-The Client-Side Interface is governed by the LINE Rich Menu framework, serving as the primary navigation infrastructure for digital service delivery. This interface is optimized for mission-critical hospital functions, ensuring constituents have standardized and efficient access to healthcare resources.
+The Client-Side Interface is architected using the **LINE Rich Menu Framework**, serving as the primary navigation gateway for Digital Healthcare Delivery. The interface layout is strategically designed to prioritize mission-critical services and emergency healthcare access.
+
+### 2.1 Visual Interface Protocol (Rich Menu)
+
+
 
 <p align="center">
-  <img src="richmenu.png" alt="Hospital Interface Protocol" width="100%" style="border: 1.5px solid #222; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+  <img src="richmenu.png" alt="Hospital Rich Menu Interface" width="550" style="border: 3px solid #007c91; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+  <br>
+  <em><strong>Exhibit A:</strong> Architectural Layout of Client-Side Service Interface (8-Grid System)</em>
 </p>
-<p align="center"><strong>Exhibit A:</strong> <em>Architectural Layout of Client-Side Service Interface</em></p>
+
+### 2.2 Service Domain & Functional Protocols
+
+| Service Domain | Triggering Keyword Aliases | Functional Protocol |
+|:---|:---|:---|
+| **Telemedicine** | เริ่มใช้บริการ telemedicine, เริ่มต้น, ใช้งาน telemedicine | `getTelemedSession()` |
+| **Service Info** | ข้อมูลเพิ่มเติมเกี่ยวกับ telemedicine, บริการ, ดูเพิ่มเติม | `getMoreTelemed()` |
+| **Public Relations** | ประชาสัมพันธ์, ข่าวสารประชาสัมพันธ์ | `getLatestNews()` |
+| **Contact/Profile** | ติดต่อเรา, เกี่ยวกับเรา | `getContactInfo()` |
+| **Clinical Services** | ตรวจโรคทั่วไป, แพทย์แผนไทย, แพทย์แผนจีน | `getClinicalInquiry()` |
+| **Knowledge Base** | คำถามที่พบบ่อย, FAQ, สาระสุขภาพ | `getFaqKnowledgeBase()` |
+| **Navigation** | บริการของเรา, เมนูหลัก | `servicesQuickReply()` |
 
 ---
 
 ## 3. Transactional Architecture & Procedural Workflow
 
-The operational lifecycle of each inbound request is delineated in the following flowchart. The architecture enforces a mandatory validation phase at the security perimeter to mitigate unauthorized data injection prior to internal service orchestration.
+The Data Transaction Lifecycle enforces a mandatory validation phase at the Ingress Point. This security perimeter is designed to mitigate risks of unauthorized data injection and ensure the provenance of every inbound request before internal service orchestration.
+
+
 
 ```mermaid
 graph TD
-    %% Node Definitions
     A([LINE Gateway Ingress]) --> B[HTTPS Payload Transmission]
-    B --> C{Security Validation<br/>Gateway}
+    B --> C{Security Validation}
     
-    %% Authentication Logic
-    C -- Unauthorized --> D[401 Termination & Logging]
-    C -- Validated --> E[Payload Parsing & Logical Analysis]
+    C -- Unauthorized --> D[401 Unauthorized Response]
+    C -- Validated --> E[JSON Payload Parsing]
     
-    %% Routing Logic
-    E --> F{Event Routing<br/>Matrix}
-    F -- Actionable Event --> G[Internal Service Integration]
-    F -- Administrative Event --> H[Profile Synchronization]
+    E --> F{Event Routing Matrix}
+    F -- Service Event --> G[Internal HIS Integration]
+    F -- Identity Event --> H[Profile Synchronization]
     
-    %% Processing & Response
-    G --> I[Institutional Database Interaction]
-    I --> J[Response Synthesis & Object Construction]
+    G --> I[(HIS Central Database)]
+    I --> J[Response Object Synthesis]
     
-    J --> K[Outbound API Transmission]
+    J --> K[Outbound API Delivery]
     K --> L([200 OK Status Acknowledgement])
-    
-    %% Styling
-    style C fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style F fill:#f9f9f9,stroke:#333,stroke-width:2px
+
+    style C fill:#f4f4f4,stroke:#007c91,stroke-width:2px
+    style F fill:#f4f4f4,stroke:#007c91,stroke-width:2px
