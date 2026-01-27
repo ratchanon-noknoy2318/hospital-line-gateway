@@ -3,13 +3,13 @@
 **Document Identifier:** KPC-HIS-LINEOA-001  
 **Subject:** Integrated Health Information Gateway (LINE Messaging Interface)  
 **Classification:** Internal Use Only (Confidential)  
-**Revision:** 1.0.4 (2026)
+**Revision:** 1.0.0
 
 ---
 
 
 <p align="center">
-  <img src="richmenu.png" alt="Hospital Rich Menu Interface" width="550" style="border: 3px solid #007c91; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+  <img src="richmenu\richmenu.png" alt="Hospital Rich Menu Interface" width="550" style="border: 3px solid #007c91; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
   <br>
   <em><strong>Exhibit A:</strong> Architectural Layout of Client-Side Service Interface (8-Grid System)</em>
 </p>
