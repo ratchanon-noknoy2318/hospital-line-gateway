@@ -1,55 +1,20 @@
-# LINE Official Account: Hospital Digital Gateway
-**Kamphaeng Phet Municipal Community Hospital**
+# LINE Digital Health Gateway (KPPMCH)
 
-This is the "Digital Front Desk" of our hospital. I designed this LINE OA to help citizens access medical services instantly through their phones, making healthcare friendly and reachable for everyone.
+**Integrated Service Orchestration | 8-Grid High-Availability Interface | Nurse-Validated**
 
----
-
-### 1. Helping the Community (Impact)
-I built this system based on real needs from nurses to make sure patients get help as fast as possible.
-
-| Service Area | What I Created | Why it helps |
-| :--- | :--- | :--- |
-| **Telemedicine** | Remote Doctor Consults | Patients can see a doctor from home |
-| **Quick Contact** | Direct Hotline & Info | No more waiting on the phone for hours |
-| **Clinic Info** | Thai & Chinese Medicine | Clear information for all medical choices |
-| **Health News** | Latest Updates & FAQ | Keeps the community healthy and informed |
+An enterprise-grade LINE Official Account (OA) framework designed as the "Digital Front Desk" for Kamphaeng Phet Municipal Community Hospital. This gateway orchestrates multiple clinical services into a single, user-centric mobile interface, ensuring 24/7 healthcare accessibility.
 
 ---
 
-### 2. Smart System Design (Operational Flow)
-The system is built to understand simple words and guide users to the right service automatically.
+## 1. System Architecture & Service Flow
 
-| User Keyword | System Action | Outcome |
-| :--- | :--- | :--- |
-| "Start Telemed" | getTelemedSession() | Starts a private doctor chat |
-| "FAQ" | getFaqKnowledge() | Answers common health questions |
-| "News" | getLatestNews() | Shows the hospital’s latest updates |
+The system acts as a centralized middleware connecting citizens directly to hospital services via a structured rich-menu interface.
 
----
-
-### 3. Trust & Official Standards
-This isn't just a side project; it is an official government tool verified by city leaders.
-
-* **Nurse-Led Design:** Every menu was designed with input from our nursing team.
-* **Official Verification:** Reviewed and approved by the Municipal Secretary.
-* **Data Safety:** Built to follow government standards for healthcare information.
-
----
-
-### 4. Technical Snapshot
-* **Platform:** LINE Official Account (8-Grid Rich Menu)
-* **Architecture:** Integrated Service Gateway
-* **Deployment:** Official Kamphaeng Phet Municipality Channel
-
----
-
-### 5. Contact & Development
-| Role | Name |
-| :--- | :--- |
-| **Lead Developer** | Ratchanon Noknoy |
-| **Collaboration** | Nursing Frontline & Municipal Office |
-| **LinkedIn** | [linkedin.com/in/ratchanon-noknoy](https://www.linkedin.com/in/ratchanon-noknoy/) |
-
----
-**Note:** This system connects the hospital directly to the people, ensuring that help is always just one chat away.
+### 🔄 Service Orchestration Diagram
+```mermaid
+graph TD
+    A[Patient/User] -->|LINE Interface| B{Digital Gateway}
+    B -->|Keyword Trigger| C[Telemedicine Session]
+    B -->|API Request| D[Clinical FAQ Knowledge Base]
+    B -->|Navigation| E[Traditional Medicine Info]
+    B -->|Webhook| F[Municipal News Feed]
