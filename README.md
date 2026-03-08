@@ -13,8 +13,19 @@ The system acts as a centralized middleware connecting citizens directly to hosp
 ### 🔄 Service Orchestration Diagram
 ```mermaid
 graph TD
-    A[Patient/User] -->|LINE Interface| B{Digital Gateway}
-    B -->|Keyword Trigger| C[Telemedicine Session]
-    B -->|API Request| D[Clinical FAQ Knowledge Base]
-    B -->|Navigation| E[Traditional Medicine Info]
-    B -->|Webhook| F[Municipal News Feed]
+    subgraph Client_Layer [User Interface]
+        User[Patient / User] -->|HTTPS/JSON| LINE[LINE Messaging Platform]
+    end
+
+    subgraph Orchestration_Layer [Serverless Logic - Node.js/GAS]
+        LINE -->|Webhook Event| Gateway{Digital Health Gateway}
+        Gateway -->|Route| Tele[Telemedicine: Next.js + Vercel]
+        Gateway -->|Query| FAQ[Knowledge Base: Google Apps Script]
+        Gateway -->|Fetch| Trad[Static Content Service]
+        Gateway -->|Stream| News[Municipal News Feed API]
+    end
+
+    subgraph Data_Layer [Persistence & Storage]
+        Tele -->|ACID Transaction| DB[(Patient Database)]
+        FAQ -->|Lookup| Sheet[(Cloud Knowledge Base)]
+    end
